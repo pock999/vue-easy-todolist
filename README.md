@@ -1,4 +1,4 @@
-Vue todolst 練習
+Vue todolist 練習
 =============
 
 本練習是直接用script標籤引入，目的是為了要理解Vue的基本用法
