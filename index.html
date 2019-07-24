@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="zh-Hant-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Vue-todolist</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.10/dist/vue.js"></script>
+    <style>
+        h1{
+            text-align: center;
+        }
+        div{
+            -webkit-box-sizing: border-box;
+            -moz-box-sizing: border-box;
+            box-sizing: border-box;
+        }
+        #app{
+            margin:30px auto;
+            width:600px;
+        }
+        #todolist{
+            float: left;
+            width:300px;
+        }
+        #trashlist{
+            width:300px;
+            float: right;
+        }
+        .finish{
+            text-decoration: line-through;
+            color:gray;
+        }
+        li{
+            height: 30px;
+            font-size: 24px;
+            line-height: 30px;
+            margin-right:5px;
+        }
+        li button{
+            float: right;
+            height:24px;
+            font-size: 18px;
+        }
+    </style>
+    
+</head>
+<body>
+    <div id="app">
+        <h1 v-text="title"></h1>
+        <div id="todolist">
+            <h2>{{todotitle}}</h2>
+            <input type="text" v-model="newthing" v-on:keyup.enter="addItem"><button @click="addItem">add</button>
+            <ul>
+                <li v-for="item in todolist">
+                    <span v-on:click="toggleFinish(item)" v-bind:class="{finish:item.isFinish}">{{item.text}}</span>
+                    <button v-on:click="deleteItem(item)">Delete</button>
+                </li>
+            </ul>
+        </div>
+        <div id="trashlist">
+            <h2>{{trashtitle}}</h2>
+            <ul>
+                <li v-for="item in trashlist">{{item}}</li>
+            </ul>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+
+</html>
